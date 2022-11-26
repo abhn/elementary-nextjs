@@ -10,9 +10,10 @@ interface Props {
     }
   }
   slug?: string
+  path: string
 }
 
-export default function CoverImage({ title, coverImage, slug }: Props) {
+export default function CoverImage({ title, coverImage, slug, path }: Props) {
   const image = (
     <Image
       width={2000}
@@ -27,7 +28,7 @@ export default function CoverImage({ title, coverImage, slug }: Props) {
   return (
     <div className="sm:mx-0">
       {slug ? (
-        <Link href={`/posts/${slug}`} aria-label={title}>
+        <Link href={path} aria-label={title}>
           {image}
         </Link>
       ) : (

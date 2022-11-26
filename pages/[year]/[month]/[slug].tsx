@@ -4,7 +4,6 @@ import Head from 'next/head'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import Container from '../../../components/container'
 import PostBody from '../../../components/post-body'
-import MoreStories from '../../../components/more-stories'
 import Header from '../../../components/header'
 import PostHeader from '../../../components/post-header'
 import SectionSeparator from '../../../components/section-separator'
@@ -33,7 +32,7 @@ export default function Post({ post, posts, preview }) {
             <article>
               <Head>
                 <title>
-                  {post.title} | Next.js Blog Example with {CMS_NAME}
+                  {post.title} | Abhishek Nagekar's Blog
                 </title>
                 <meta
                   property="og:image"
@@ -53,7 +52,6 @@ export default function Post({ post, posts, preview }) {
             </article>
 
             <SectionSeparator />
-            {morePosts.length > 0 && <MoreStories posts={morePosts} />}
           </>
         )}
       </Container>
@@ -86,7 +84,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
       const postDate = new Date(node.date);
       const month = (postDate.getMonth() + 1).toString().padStart(2, "0");
       const year = postDate.getFullYear().toString();
-      console.log(month, year, node.slug);
       return {
         params: {
           year: year,
@@ -94,7 +91,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
           slug: node.slug
         }
       }
-      // return `/${year}/${month}/${node.slug}`
     }) || [],
     fallback: true,
   }

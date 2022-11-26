@@ -10,17 +10,22 @@ export default function PostPreview({
   excerpt,
   author,
   slug,
+  path
 }) {
   return (
     <div>
       <div className="mb-5">
         {coverImage && (
-          <CoverImage title={title} coverImage={coverImage} slug={slug} />
+          <CoverImage
+            title={title}
+            coverImage={coverImage}
+            slug={slug}
+            path={path} />
         )}
       </div>
       <h3 className="text-3xl mb-3 leading-snug">
         <Link
-          href={`/posts/${slug}`}
+          href={path}
           className="hover:underline"
           dangerouslySetInnerHTML={{ __html: title }}
         ></Link>
